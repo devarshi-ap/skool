@@ -1,0 +1,58 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model course {
+    c_id        Int        @id @default(autoincrement())
+    dept        String?    @db.VarChar(50)
+    code        String?    @db.VarChar(50)
+    title       String?    @db.VarChar(50)
+    description String?
+    prof        String?    @db.VarChar(50)
+    units       Int?
+    semester    String?    @db.VarChar(10)
+    prof_cou    prof_cou[] @ignore
+    stu_cou     stu_cou[]  @ignore
+}
+
+model prof {
+    p_id     Int        @id @default(autoincrement())
+    email    String?    @unique @db.VarChar(100)
+    fname    String?    @db.VarChar(50)
+    lname    String?    @db.VarChar(50)
+    faculty  String?    @db.VarChar(50)
+    tenured  Boolean?   @default(false)
+    prof_cou prof_cou[] @ignore
+}
+
+model prof_cou {
+    id        Int     @id @default(autoincrement())
+    prof_id   Int?
+    course_id Int?
+    course    course? @relation(fields: [course_id], references: [c_id], onDelete: NoAction, onUpdate: NoAction)
+    prof      prof?   @relation(fields: [prof_id], references: [p_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model stu_cou {
+    id         Int      @id @default(autoincrement())
+    student_id Int?
+    course_id  Int?
+    course     course?  @relation(fields: [course_id], references: [c_id], onDelete: NoAction, onUpdate: NoAction)
+    student    student? @relation(fields: [student_id], references: [s_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model student {
+    s_id    Int       @id @default(autoincrement())
+    email   String?   @unique @db.VarChar(100)
+    fname   String?   @db.VarChar(50)
+    lname   String?   @db.VarChar(50)
+    program String?   @db.VarChar(50)
+    year    Int?
+    gpa     Decimal?  @db.Decimal
+    stu_cou stu_cou[] @ignore
+}
