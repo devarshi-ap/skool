@@ -10,7 +10,7 @@ datasource db {
 model course {
     c_id        Int        @id @default(autoincrement())
     dept        String?    @db.VarChar(50)
-    code        String?    @db.VarChar(50)
+    code        String?    @unique @db.VarChar(50)
     title       String?    @db.VarChar(50)
     description String?
     prof        String?    @db.VarChar(50)
