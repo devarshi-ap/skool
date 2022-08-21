@@ -36,7 +36,7 @@ export default async function studentHandler(req: NextApiRequest, res: NextApiRe
                 const { email, fname, lname, program, year, gpa }: Student = req.body;
                 
                 const student = await prisma.student.upsert({
-                    where: { email: req.body.email },
+                    where: { email, },
                     update: {},
                     create: {
                         email,
