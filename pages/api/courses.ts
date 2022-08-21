@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { prisma } from './db/db';
 
 export default async function courseHandler(req: NextApiRequest, res: NextApiResponse) {
     
