@@ -34,15 +34,15 @@ model prof_cou {
     id        Int     @id @default(autoincrement())
     prof_id   Int?
     course_id Int?
-    course    course? @relation(fields: [course_id], references: [c_id], onDelete: NoAction, onUpdate: NoAction)
-    prof      prof?   @relation(fields: [prof_id], references: [p_id], onDelete: NoAction, onUpdate: NoAction)
+    course    course? @relation(fields: [course_id], references: [c_id], onDelete: Cascade, onUpdate: NoAction)
+    prof      prof?   @relation(fields: [prof_id], references: [p_id], onDelete: Cascade, onUpdate: NoAction)
 }
 
 model stu_cou {
     id         Int      @id @default(autoincrement())
     student_id Int?
     course_id  Int?
-    course     course?  @relation(fields: [course_id], references: [c_id], onDelete: NoAction, onUpdate: NoAction)
+    course     course?  @relation(fields: [course_id], references: [c_id], onDelete: Cascade, onUpdate: NoAction)
     student    student? @relation(fields: [student_id], references: [s_id], onDelete: Cascade, onUpdate: NoAction)
 }
 
