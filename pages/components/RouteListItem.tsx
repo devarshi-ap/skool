@@ -7,10 +7,14 @@ interface RouteItemProps {
 export default function RouteListItem({ endpoint, endpointText, verbs}: RouteItemProps) {
     
     const baseURL: string = "https://skool-rest-api.herokuapp.com/api";
-
-    const verbsList: any = verbs.map((verb: string, index: number) => (
-        <li key={index}><code>{verb.split("-")[0]}</code> - {verb.split("-")[1]}.</li>
-    ))
+    let verbsList: any;
+    if (verbs) {
+        verbsList = verbs.map((verb: string, index: number) => (
+            <li key={index}><code>{verb.split("-")[0]}</code> - {verb.split("-")[1]}.</li>
+        ))
+    } else {
+        <li>Something went wrong</li>
+    }
 
     return(
         <li>
