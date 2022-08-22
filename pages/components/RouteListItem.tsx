@@ -1,10 +1,10 @@
-interface EndpointProps {
+interface RouteItemProps {
     endpoint: string,
     endpointText: string,
     verbs: string[],
 }
 
-export default function EndpointItem({ endpoint, endpointText, verbs}: EndpointProps) {
+export default function RouteListItem({ endpoint, endpointText, verbs}: RouteItemProps) {
     
     const baseURL: string = "https://skool-rest-api.herokuapp.com/api";
 

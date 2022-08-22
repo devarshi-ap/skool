@@ -1,4 +1,4 @@
-import EndpointItem from "./components/endpointItem";
+import RouteListItem from "./components/RouteListItem";
 
 export default function Custom404() {
     
@@ -15,43 +15,43 @@ export default function Custom404() {
 
             <ul className="px-5 my-10 font-light space-y-10">
 
-                <EndpointItem 
+                <RouteListItem 
                     endpoint='/students'
                     endpointText='/ students'
                     verbs={['GET-get all students', 'POST-create new student']}
                 />
 
-                <EndpointItem 
+                <RouteListItem 
                     endpoint='/students/2'
                     endpointText='/ students / {s-id}'
                     verbs={['GET-get student with s_id', 'PATCH-update student with s_id', 'DELETE-remove student with s_id']}
                 />
 
-                <EndpointItem 
+                <RouteListItem 
                     endpoint='/students/2/courses'
                     endpointText='/ students / {s-id} / courses'
                     verbs={['GET-get courses of student with s_id']}
                 />
 
-                <EndpointItem 
+                <RouteListItem 
                     endpoint='/students/2/courses/2'
                     endpointText='/ students / {s-id} / courses / {c-id}'
                     verbs={['PUT-enrol student with s_id into course with c_id', 'DELETE-drop student with s_id out of course with c_id']}
                 />
 
-                <EndpointItem 
+                <RouteListItem 
                     endpoint='/courses'
                     endpointText='/ courses'
                     verbs={['GET-get all courses offered', 'POST-create (offer) a new course']}
                 />
 
-                <EndpointItem 
+                <RouteListItem 
                     endpoint='/courses/1'
                     endpointText='/ courses / {c-id}'
                     verbs={['GET-get courses with c_id', 'DELETE-remove (no longer offer) course with c_id']}
                 />
 
-                <EndpointItem 
+                <RouteListItem 
                     endpoint='/profs'
                     endpointText='/ profs'
                     verbs={['GET-get all profs', 'POST-create new prof']}
