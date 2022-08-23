@@ -92,7 +92,7 @@ create table if not exists prof (
 
 <br />
 
-#### › Challenges 🚧
+### › Challenges 🚧
 - first time designing a database
 - first time deploying to heroku
 - trying to find a work-around of NextJs' poorly documented nested dynamic routing
@@ -101,7 +101,7 @@ create table if not exists prof (
 
 <br />
 
-#### › Learning 🌱
+### › Learning 🌱
 - Postgresql primary and foreign keys
 - Connecting and deploying postgres (PgAdmin) database to heroku
 - Prisma schema validation
@@ -110,7 +110,7 @@ create table if not exists prof (
 
 <br />
 
-#### › Setup ⚙️
+### › Setup ⚙️
 
 The DB is hosted on Postgres Heroku (PaaS), so you'll need to [set that up](https://devcenter.heroku.com/articles/heroku-postgresql).
 
