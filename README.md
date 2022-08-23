@@ -47,7 +47,7 @@ baseURL = **/api**
 <br />
 
 #### › Database Design
-[Insert dbdesign screenshot]
+![School](https://user-images.githubusercontent.com/59234436/186207010-e4a0fc4e-7242-4aef-b0cd-29c65a15b34d.png)
 
 Below you'll find the database schemas:
 
