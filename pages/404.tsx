@@ -5,13 +5,15 @@ export default function Custom404() {
     const baseURL: string = "https://skool-rest-api.herokuapp.com/api";
 
     return (
-        <div className="flex flex-col w-[80%] mx-auto mt-20">
+        <div className="flex flex-col w-[85%] mx-auto mt-20">
 
-            <div className="flex flex-col w-full items-center place-content-center h-[30vh] font-mono border-b-[1px] border-slate-400 space-y-5" >
+            <div className="flex flex-col w-full items-center place-content-center h-[30vh] font-mono space-y-5" >
                 <span className="text-6xl animate-pulse">🏴‍☠️</span>
                 <h1 className="text-2xl">Ahoy matey! This here be a 404 page.</h1>
                 <h2 className="text-xl border-slate-500">The API entrypoint is @ <a href={baseURL}>/api</a></h2>
             </div>
+
+            <hr />
 
             <ul className="px-5 my-10 font-light space-y-10">
 
