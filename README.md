@@ -95,7 +95,7 @@ create table if not exists prof (
 #### › Challenges
 - first time designing a database
 - first time deploying to heroku
-- trying to find a work-around NextJs' poorly documented nested dynamic routing
+- trying to find a work-around of NextJs' poorly documented nested dynamic routing
 - making api structure as semantic as can be,
 - got in over my head trying to use Docker,
 
