@@ -27,7 +27,7 @@ export default function RouteListItem({ endpoint, endpointText, verbs, serverJSO
         verbsList = verbs.map((verb: string, index: number) => (
             <>
                 <li key={index}><code>{verb.split("-")[0]}</code> - {verb.split("-")[1]}.</li>
-                <div className="flex flex-col w-full space-y-3 my-8">
+                <div className="flex flex-col w-full space-y-3 my-4">
                     <button className='bg-slate-300 text-black p-1' onClick={toggleShowReq}>{showReq ? "▾ Hide" : "‣ Show"} Request : {serverJSON[verb.split("-")[0]].exUrl}</button>
                     {showReq && (
                         <Prism language="json" colorScheme="dark">{
@@ -47,9 +47,9 @@ export default function RouteListItem({ endpoint, endpointText, verbs, serverJSO
     }
 
     return(
-        <li>
+        <li className='border border-black p-6 rounded-md'>
             <a href={`${baseURL}${endpoint}`} className="text-[#2563eb] text-xl">{endpointText}</a>
-            <ul className="list-disc text-sm mt-2">
+            <ul className="list-disc text-sm my-4">
                 {verbsList}
             </ul>
         </li>
