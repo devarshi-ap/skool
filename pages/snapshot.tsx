@@ -19,7 +19,13 @@ interface Course {
     "semester": string,
 }
 
-export default function snapshot({ students, courses }: {students: Student[], courses: Course[]}) {
+interface StuCou {
+    "id": number,
+    "student_id": string,
+    "course_id": string,
+}
+
+export default function snapshot({ students, courses, stuCou }: {students: Student[], courses: Course[], stuCou: StuCou[]}) {
 
     return (
         <div className="flex flex-col w-[85%] mx-auto my-20 text-center space-y-10">
@@ -100,7 +106,12 @@ export async function getServerSideProps() {
     const coursesRes = await fetch(`http://skool-rest-api.herokuapp.com/api/courses`);
     const coursesdata: { courses: Course[] } = await coursesRes.json();
     const courses: Course[] = coursesdata.courses;
+
+    // Fetch StuCou's from API
+    const stuCouRes = await fetch(`http://skool-rest-api.herokuapp.com/api/stucou`);
+    const stuCouData: { stuCouData: StuCou[] } = await stuCouRes.json();
+    const stuCou: StuCou[] = stuCouData.stuCouData;
     
     // Pass data to the page via props
-    return { props: { students, courses } }
+    return { props: { students, courses, stuCou } }
 }
