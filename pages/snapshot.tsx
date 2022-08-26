@@ -21,11 +21,35 @@ interface Course {
 
 interface StuCou {
     "id": number,
-    "student_id": string,
-    "course_id": string,
+    "student_id": number,
+    "course_id": number,
 }
 
+interface StuCouClean {
+    "student_name": string,
+    "course_code": string,
+}
+
+
 export default function snapshot({ students, courses, stuCou }: {students: Student[], courses: Course[], stuCou: StuCou[]}) {
+
+    const getStudentNameById = (student_id: number): string => {
+        const stu: Student = students.filter(student => { return student.s_id == student_id })[0];
+        return stu.fname + stu.lname;
+    }
+
+    const getCourseCodeById = (course_id: number): string => {
+        const cou: Course = courses.filter(course => { return course.c_id == course_id })[0];
+        return cou.code;
+    }
+
+    let stuCouCleaned: StuCouClean[] = [];
+    stuCou.forEach((stuCouInstance: StuCou) => {
+        stuCouCleaned.push({
+            "student_name": getStudentNameById(stuCouInstance.student_id),
+            "course_code": getCourseCodeById(stuCouInstance.course_id),
+        })
+    })
 
     return (
         <div className="flex flex-col w-[85%] mx-auto my-20 text-center space-y-10">
@@ -91,24 +115,47 @@ export default function snapshot({ students, courses, stuCou }: {students: Stude
                     ))}
                 </tbody>
             </table>
+
+            {/* STUDENT-COURSES ROWS */}
+            <span className="text-lg underline font-mono font-semibold text-pink-800">Student-Courses:</span>
+            <table className="table-fixed m-2">
+                <thead>
+                    <tr className="[&>*]:border [&>*]:border-black">
+                        <th>Student Name</th>
+                        <th>Course Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {stuCouCleaned.map((stuCou: StuCouClean, index: number) => (
+                        <tr className="[&>*]:border [&>*]:p-2 [&>*]:border-black" key={index}>
+                            <td>{stuCou.student_name}</td>
+                            <td>{stuCou.course_code}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
         </div>
     )
 }
 
 export async function getServerSideProps() {
 
+    // const baseURL: string = "https://skool-rest-api.herokuapp.com/";
+    const baseURL: string = "http://localhost:3000";
+
     // Fetch Students from API
-    const studentsRes = await fetch(`http://skool-rest-api.herokuapp.com/api/students`);
+    const studentsRes = await fetch(`${baseURL}/api/students`);
     const studentsData: { students: Student[] } = await studentsRes.json();
     const students: Student[] = studentsData.students;
 
     // Fetch Courses from API
-    const coursesRes = await fetch(`http://skool-rest-api.herokuapp.com/api/courses`);
+    const coursesRes = await fetch(`${baseURL}/api/courses`);
     const coursesdata: { courses: Course[] } = await coursesRes.json();
     const courses: Course[] = coursesdata.courses;
 
     // Fetch StuCou's from API
-    const stuCouRes = await fetch(`http://skool-rest-api.herokuapp.com/api/stucou`);
+    const stuCouRes = await fetch(`${baseURL}/api/stucous`);
     const stuCouData: { stuCouData: StuCou[] } = await stuCouRes.json();
     const stuCou: StuCou[] = stuCouData.stuCouData;
     
