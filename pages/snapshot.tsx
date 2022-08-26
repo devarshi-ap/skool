@@ -141,8 +141,8 @@ export default function snapshot({ students, courses, stuCou }: {students: Stude
 
 export async function getServerSideProps() {
 
-    // const baseURL: string = "https://skool-rest-api.herokuapp.com/";
-    const baseURL: string = "http://localhost:3000";
+    const baseURL: string = "https://skool-rest-api.herokuapp.com/";
+    // const baseURL: string = "http://localhost:3000";
 
     // Fetch Students from API
     const studentsRes = await fetch(`${baseURL}/api/students`);
