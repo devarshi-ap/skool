@@ -35,7 +35,7 @@ export default function snapshot({ students, courses, stuCou }: {students: Stude
 
     const getStudentNameById = (student_id: number): string => {
         const stu: Student = students.filter(student => { return student.s_id == student_id })[0];
-        return stu.fname + stu.lname;
+        return stu.fname + " " + stu.lname;
     }
 
     const getCourseCodeById = (course_id: number): string => {
