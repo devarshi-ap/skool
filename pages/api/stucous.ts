@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from './db/db';
 
-export default async function stuCouHandler(req: NextApiRequest, res: NextApiResponse) {
+export default async function stucouHandler(req: NextApiRequest, res: NextApiResponse) {
     
     const { method } = req
 
