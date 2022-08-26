@@ -3,7 +3,7 @@ import RouteListItem from "./components/RouteListItem";
 export default function Custom404() {
     
     // NOTE: make sure localhost is http, not https; browsers will give Transport Layer Security error (TLS)
-    const baseURL: string = "https://skool-rest-api.herokuapp.com/";
+    const baseURL: string = "https://skool-rest-api.herokuapp.com";
     // const baseURL: string = "http://localhost:3000";
 
     return (
