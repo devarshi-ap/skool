@@ -2,15 +2,18 @@ import RouteListItem from "./components/RouteListItem";
 
 export default function Custom404() {
     
-    const baseURL: string = "https://skool-rest-api.herokuapp.com/api";
+    // NOTE: make sure localhost is http, not https; browsers will give Transport Layer Security error (TLS)
+    const baseURL: string = "https://skool-rest-api.herokuapp.com/";
+    // const baseURL: string = "http://localhost:3000";
 
     return (
         <div className="flex flex-col w-[85%] mx-auto mt-20">
 
-            <div className="flex flex-col w-full items-center place-content-center h-[30vh] font-mono space-y-5" >
+            <div className="flex flex-col w-full items-center place-content-center h-[40vh] font-mono space-y-5" >
                 <span className="text-6xl animate-pulse">🏴‍☠️</span>
                 <h1 className="text-2xl">Ahoy matey! This here be a 404 page.</h1>
-                <h2 className="text-xl border-slate-500">The API entrypoint is @ <a href={baseURL}>/api</a></h2>
+                <h2 className="text-xl border-slate-500">The API entrypoint is @ <a href={`${baseURL}/api`} className="text-teal-800">/api</a></h2>
+                <h2 className="text-xl border-slate-500">See current DB instance @ <a href={`${baseURL}/snapshot`} className="text-teal-800">/snapshot</a></h2>
             </div>
 
             <hr />
