@@ -122,7 +122,7 @@ npm run dev
 yarn dev
 ```
 
-Any changes in the prisma schema must be migrated to the postgres database deployed on heroku using the Prisma CLI
+Any changes in the prisma schema must be migrated to the postgres DB deployed on heroku using the Prisma CLI
 ```bash
 # migrate to DB
 npx prisma db push
